@@ -1,4 +1,4 @@
-from dataBase import Personal_Info, BP
+from dataBase import *
 
 
 def infos():
@@ -30,21 +30,24 @@ def infos():
 
 def bp_info(lst):
     # Getting Input for Systolic
-    systolic = int(input('What is your systolic level? '))
+    systolic = int(input(lst + ', What is your systolic level? '))
     while systolic < 65 or systolic > 230:
         if systolic < 65:
-            print("You inputted below 65!")
+            print(lst + ", You inputted below 65!")
         if systolic > 230:
-            print("You entered above 230!")
-        systolic = int(input('What is your systolic level? '))
-    diastolic = int(input('What is your diastolic level? '))
+            print(lst + ", You entered above 230!")
+        systolic = int(input(lst + ', What is your systolic level? '))
+    diastolic = int(input(lst + ', What is your diastolic level? '))
     while diastolic < 35 or diastolic > 135:
         if diastolic < 35:
-            print("You inputted below 35!")
+            print(lst + ", You inputted below 35!")
         if diastolic > 135:
-            print("You entered above 135!")
-        diastolic = int(input('What is your diastolic level? '))
+            print(lst + ", You entered above 135!")
+        diastolic = int(input(lst + ', What is your diastolic level? '))
     bp = BP(systolic, diastolic)
     bp.set_systolic(systolic)
     bp.set_diastolic(diastolic)
-    bp.status(lst)
+    bp.status()
+    for lst in bp.patient_info:
+        print(lst)
+    return bp.patient_info

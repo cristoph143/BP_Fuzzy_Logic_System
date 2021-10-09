@@ -32,17 +32,24 @@ class Personal_Info:
 
     def hello(self):
         print('Welcome to Python ' + self.name + '!')
-        print('In ' + str(self.age) + ' years of existence as a ' + str(self.gender) +
-              '!You will discovered how your BP will work! Congrats!!!')
+        print('In ' + str(self.age) + ' years of existence as a ' + str(self.gender))
+        print('You will discovered how your BP will work! Congrats!!!')
 
 
 class BP:
+    patient_info = []
+
     def __init__(self, sys, dia):
-        self._name = Personal_Info.get_name
-        self._gender = Personal_Info.get_gender
-        self._age = Personal_Info.get_age
+        self._name = Personal_Info.info[0]
+        self._age = Personal_Info.info[1]
+        self._gender = Personal_Info.info[2]
         self._systolic = sys
         self._diastolic = dia
+        self.patient_info.append(self._name)
+        self.patient_info.append(self._age)
+        self.patient_info.append(self._gender)
+        self.patient_info.append(self._systolic)
+        self.patient_info.append(self._diastolic)
 
     def get_systolic(self):
         return self._systolic
@@ -56,5 +63,6 @@ class BP:
     def set_diastolic(self, dia):
         self._diastolic = dia
 
-    def status(self, name):
-        print(name + ', you have ' + str(self._systolic) + ' / ' + str(self._diastolic))
+    def status(self):
+        print(self._name + ' in the age of ' + str(self._age) +
+              ', You have ' + str(self._systolic) + ' / ' + str(self._diastolic))
